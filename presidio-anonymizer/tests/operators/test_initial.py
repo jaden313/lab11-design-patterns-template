@@ -12,6 +12,9 @@ import pytest
     [
         ("John Smith", "J. S."),
         ("     Eastern    Michigan   University ", "E. M. U."),
+	("@abc", "@A."),
+	("@843A", "@8."),
+	("--**abc", "--**A."),
     ],
 )
 def test_given_value_for_initial(input_text, initials):
