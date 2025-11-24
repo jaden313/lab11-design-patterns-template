@@ -1,21 +1,19 @@
-from presidio_anonymizer.operators import Operator
-
+from presidio_anonymizer.operators import Operator, OperatorType
 
 class Initial(Operator):
-
-    @staticmethod
-    def operator_name():
+    def operator_name(self) -> str:
         return "initial"
 
-    @staticmethod
-    def operator_type():
-        return "Anonymize"
+    def operator_type(self) -> OperatorType:
+        return OperatorType.Anonymize
 
-    def validate(self, params: dict = None):
-        # No params required for minimal version
-        pass
+    def operate(self, text: str, params: dict = None) -> str:
 
-    def operate(self, text: str, params: dict = None):
-        parts = text.split()
-        initials = [p[0].upper() + "." for p in parts if p]
+        words = text.strip().split()
+        initials = []
+        for w in words:
+            for ch in w:
+                if ch.isalnum():
+                    initials.append(ch.upper() + ".")
+                    break
         return " ".join(initials)
