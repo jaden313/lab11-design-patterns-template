@@ -202,3 +202,22 @@ docker-compose up -d
 
 Follow the [API Spec](https://microsoft.github.io/presidio/api-docs/api-docs.html#tag/Anonymizer) for the
 Anonymizer REST API reference details
+
+
+
+
+Lab 11 Debugging
+
+1. -call-stack.png is in the root of this repository
+
+2. Identify how many if/elif branches the factory uses to select the operator.
+
+-There is only one if check to select the operator.
+
+3. Identify the exact Python data structure used to select operators.
+
+-The Python data structure that is used to select the operator is a Python dictionary that maps operator names to operator classes
+
+4. Explain how this demonstrates the Strategy design pattern.
+
+-This demonstrates the Strategy design pattern because the engine picks what strategy it should use at runtime based on the name. 
